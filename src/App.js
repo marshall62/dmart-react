@@ -41,7 +41,7 @@ function App() {
     
     login();
 
-  });
+  },[]);
 
   const url = `${c.imageRootURI}/${aw.imagePath}`;
   console.log("URL ", url);
