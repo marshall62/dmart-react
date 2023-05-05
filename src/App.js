@@ -44,7 +44,6 @@ function App() {
   return (
     <div className="App">
         <img alt="home" src={url}/>
-        {/* <img alt="home" src="https://raw.githubusercontent.com/marshall62/dmart/main/images/david_marshall_2.jpg"/> */}
         <p>
           Hello there
         </p>
