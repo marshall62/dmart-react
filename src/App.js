@@ -11,6 +11,9 @@ function App() {
   const homeArtworkRef = useRef({});
   const configRef = useRef({});
 
+  const [aw,setAw] = useState({});
+  const [c,setC] = useState({});
+
   
 
 
@@ -29,6 +32,8 @@ function App() {
         configRef.current = cfg;
         console.log(`Config`, cfg);
         console.log(`Artwork `, artwork);
+        setAw(artwork);
+        setC(cfg);
       } catch (err) {
         console.error("Failed to log in", err.message);     
       }
@@ -38,7 +43,7 @@ function App() {
 
   });
 
-  const url = `${configRef.current.imageRootURI}/${homeArtworkRef.current.imagePath}`;
+  const url = `${c.imageRootURI}/${aw.imagePath}`;
   console.log("URL ", url);
 
   return (
