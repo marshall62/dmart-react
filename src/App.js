@@ -8,6 +8,7 @@ function App() {
   // let config = {};
   // let realmApp = null;
   
+  let url = "";
   const homeArtworkRef = useRef({});
   const configRef = useRef({});
 
@@ -43,7 +44,7 @@ function App() {
 
   },[]);
 
-  const url = `${c.imageRootURI}/${aw.imagePath}`;
+ url = `${c.imageRootURI}/${aw.imagePath}`;
   console.log("URL ", url);
 
   return (
