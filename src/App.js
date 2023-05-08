@@ -51,7 +51,7 @@ function App() {
     <div className="App">
         <img alt="home" src={url}/>
         <p>
-          Hello there
+          Hello there.  The image URL is {c.imageRootURI}/{aw.imagePath}
         </p>
     </div>
   );
