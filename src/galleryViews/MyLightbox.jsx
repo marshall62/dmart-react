@@ -7,7 +7,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export default function MyLightbox ({artworks}) {
   const navigate = useNavigate();
-  const [searchParams, _] = useSearchParams();
+  const searchParams = useSearchParams();
   const global = useContext(GlobalContext);
 
   const [artworkId, setArtworkId] = useState(searchParams.get('artwork'));

@@ -17,7 +17,7 @@ function GroupArtworks () {
       console.log("Getting category artworks", category)
       getArtworks_internal();
     }
-  },[global]); 
+  },[global,category]); 
 
   return (
     <div><MyLightbox artworks={artworks}/> <span>{artworks.length}</span></div>

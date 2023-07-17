@@ -8,7 +8,6 @@ import AllArtworks from "./galleryViews/AllArtworks";
 import GroupArtworks from "./galleryViews/GroupArtworks";
 
 export function AppRoutes () {
-  let k = 1;
   return (
     <BrowserRouter>
           <Routes>
