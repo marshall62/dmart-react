@@ -8,11 +8,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export default function MyLightbox ({artworks}) {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, ] = useSearchParams();
   const global = useContext(GlobalContext);
 
 
-  const [artworkId, setArtworkId] = useState(searchParams ? 
+  const [, setArtworkId] = useState(searchParams ? 
     searchParams.get('artwork')
     : '');
 
@@ -35,15 +35,18 @@ export default function MyLightbox ({artworks}) {
     setArtworkId(id);
   },[searchParams] )
 
-
-  const fn = (index) => {
+  // When the large image changes (a slide) update the URL in the location box to have 
+  // the index and the id of the artwork.  As of now, I don't use index.  The id can be used in a 
+  // search lookup.  So if someone sends me a link of an artwork they like, I can grab the 
+  // id from the url and put it in the search box to find the artwork.   
+  const handleSlideChange = (index) => {
     console.log("sliding to",artworks[index]._id.toString());
     navigate('?artwork=' + artworks[index]._id.toString() + '&index=' + index)
   }
 
   return(
     <>
-      <ImageGallery className="image-gallery-description" onSlide={fn} showIndex={true} items={images}></ImageGallery>
+      <ImageGallery className="image-gallery-description" onSlide={handleSlideChange} showIndex={true} items={images}></ImageGallery>
     </>
   )
 

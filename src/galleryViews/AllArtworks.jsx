@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import MyLightbox from "./MyLightbox";
 import { GlobalContext } from "../App";
+import React from "react";
 
 function AllArtworks () {
   const [artworks, setArtworks] = useState([]);
@@ -19,7 +20,7 @@ function AllArtworks () {
   },[global]); 
 
   return (
-    <div><MyLightbox artworks={artworks}/> <span>{artworks.length}</span></div>
+    <div><MyLightbox artworks={artworks}/> </div>
     
   )
     

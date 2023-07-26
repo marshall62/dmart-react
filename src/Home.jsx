@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./App";
+import React from "react";
 
 function Home () {
 

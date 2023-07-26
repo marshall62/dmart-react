@@ -3,3 +3,6 @@
   display: block;
   width: 100%;
 }   
+.image-gallery-image {
+  max-height: calc(100vh - 250px) !important;
+}

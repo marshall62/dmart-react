@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, Form as RouterForm } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -7,25 +7,30 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useContext } from "react";
 import { GlobalContext } from "./App";
+import React from 'react';
 
 export default function DmartNavbar () {
 
-  
-  const navigate = useNavigate()
-  const [searchTerm, setSearchTerm] = useState(null);
+  const [term, setTerm] = useState('');
   const global = useContext(GlobalContext);
   const artist = global.artistConfig?.artist || "";
 
+
+  // TODO After a search is submitted the input box retains the typed-in
+  // text.   This is because I'm using the action of the RouterForm to navigate
+  // to search?term=xxx which doesn't give allow me to empty the field in a callback
+  // handler like onSubmit.
+  // Its a small problem because the input text field has an X that allows clearing quickly
   const handleSubmit = (e) => {
-    console.log("submit")
-    navigate(`search/${searchTerm}`);
+    console.log("hi")
+    setTerm('');
   }
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
+  const handleTermChange = (e) => {
+    setTerm(e.target.value);
   }
 
-  console.log("artist config",artist);
+
   return (
     <Navbar bg="light" expand="lg">
     <Container fluid>
@@ -37,21 +42,23 @@ export default function DmartNavbar () {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/recent">Recent Work</Nav.Link>
-            <Nav.Link href="/all">All Work</Nav.Link>
-            <Nav.Link href="/categories">By Category</Nav.Link>
+            <Nav.Link as={Link} to="">Home</Nav.Link>
+            <Nav.Link as={Link} to="/recent">Recent Work</Nav.Link>
+            <Nav.Link as={Link} to="/all">All Work</Nav.Link>
+            <Nav.Link as={Link} to="/categories">By Category</Nav.Link>
           </Nav>
-          <Form className="d-flex" onSubmit={handleSubmit}>
+            <RouterForm action="/search" onSubmit={handleSubmit} className="d-flex" role="search">
             <Form.Control
+              id="searchTerm"
+              name="term"
               type="search"
-              placeholder="Search"
+              placeholder={term}
+              onChange={handleTermChange}
               className="me-2"
               aria-label="Search"
-              onChange={handleSearchChange}
             />
             <Button variant="outline-success" type="submit">Search</Button>
-          </Form>
+            </RouterForm>
         </Navbar.Collapse>
         </Container>
     </Navbar>

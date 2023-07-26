@@ -10,18 +10,19 @@ import GroupArtworks from "./galleryViews/GroupArtworks";
 export function AppRoutes () {
   return (
     <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<Layout/>}>
-                <Route index element={<Home/>}></Route>
-                <Route path="categories" element={<Categories/>}></Route>
-                <Route path="all" element={<AllArtworks/>}></Route>
-                <Route path="recent" element={<RecentArtworks/>}></Route>
-                <Route path="search/:searchTerm" 
-                  element={<SearchArtworks key={Math.random()} />} />
-                
-                <Route path="category/:category" element={<GroupArtworks/>}></Route>
-              </Route>
-          </Routes>
+      <Routes>
+          <Route path="/" element={<Layout/>}>
+            <Route index element={<Home/>}></Route>
+            <Route path="categories" element={<Categories/>}></Route>
+            <Route path="all" element={<AllArtworks/>}></Route>
+            <Route path="recent" element={<RecentArtworks/>}></Route>
+            {/* If I move this route up a level then the navigate in DmartNavbar works */}
+            <Route path="search" element={<SearchArtworks />} />
+            <Route path="category/:category" element={<GroupArtworks/>}></Route>
+            <Route path="*" element={<Home/>}></Route>
+          </Route>
+          
+      </Routes>
     </BrowserRouter>
   )
 }
